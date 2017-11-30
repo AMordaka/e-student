@@ -23,13 +23,34 @@ class Uczelnie extends CI_Controller {
          $this->load->helper('url'); 
       } 
 	
-	public function index() { 
+	public function index() {
        $this->load->helper('url');
 
         $query = $this->db->get("Uczelnia");
         $data['uczelnie'] = $query->result();
 
         $this->load->view('uczelnie',$data);
+    }
 
-    } 
+    public function dodajUczelnie(){
+        $name = $this->input->post('name');
+        $street = $this->input->post('street');
+        $number = $this->input->post('number');
+        $postCode = $this->input->post('postCode');
+        $city = $this->input->post('city');
+        $year = $this->input->post('year');
+
+        $data = array(
+            'name' => $name,
+            'street' => $street,
+            'number' => $number,
+            'postCode' => $postCode,
+            'city' => $city,
+            'year' => $year,
+        );
+
+        $this->db->insert('uczelnia', $data);
+
+        redirect(base_url() . 'uczelnie');
+    }
 }

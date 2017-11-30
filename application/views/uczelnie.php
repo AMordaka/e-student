@@ -108,10 +108,28 @@
                         echo "<td>$u->year</td>";
                         echo "</tr>";
                     }
-
+                    if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
+                        echo"<td><a href=\"#\" data-toggle=\"modal\" data-target=\"#dodajuczelnie\">Dodaj Uczelnie!</a></td>";
+                    }
                     ?>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="modal fade" id="dodajuczelnie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="loginmodal-container">
+                    <h1>Dodaj Uczelnie!</h1><br>
+                    <form role="form" method="post" action="<?php echo site_url('uczelnie/dodajUczelnie');?>">
+                        <input type="text" name="name" placeholder="Nazwa Uczelni">
+                        <input type="text" name="street" placeholder="Ulica">
+                        <input type="text" name="number" placeholder="Numer">
+                        <input type="text" name="postCode" placeholder="Kod Pocztowy">
+                        <input type="text" name="city" placeholder="Miasto">
+                        <input type="text" name="year" placeholder="Rok Założenia">
+
+                        <input type="submit" name="login" class="login loginmodal-submit" value="Dodaj Uczelnie">
+                    </form>
+                </div>
             </div>
 
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Rozsuń menu</a>
