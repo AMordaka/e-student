@@ -25,9 +25,10 @@ class Uczelnie extends CI_Controller {
 	
 	public function index() {
        $this->load->helper('url');
-        $this->load->view('site_header');
-        $this->load->view('sidebar_wrapper');
-        $this->load->view('login_form');
+       $this->load->view('site_header');
+       $this->load->view('sidebar_wrapper');
+       $this->load->view('login_form');
+       $this->load->view('footer');
        $this->load->model('Uczelnia_model', 'Uczelnia_model');
        $query = $this->db->get("Uczelnia");
        $data['uczelnie'] = $query->result();

@@ -28,6 +28,7 @@ class Home extends CI_Controller {
        $this->load->view('site_header');
        $this->load->view('sidebar_wrapper');
        $this->load->view('login_form');
+       $this->load->view('footer');
        $this->load->view('home');
 
     }
