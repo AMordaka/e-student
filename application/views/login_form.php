@@ -12,7 +12,7 @@
                         </div>
                         <input type="text" name="user" pattern="[0-9]{1,}" title="Proszę podać tylko cyfry" placeholder="Indeks">
                         <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Hasło musi zawierać jedną mała literę, jedną dużą jedną cyfrę i minimum 8 znaków" placeholder="Hasło">
-                        <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+                        <input type="submit" name="login" class="login loginmodal-submit" value="Zaloguj się!">
                     </form>
 
                 </div>

@@ -13,7 +13,6 @@ class Zaloguj extends CI_Controller {
       } 
 	
 	public function index() {
-       $this->load->view('zaloguj');
         $this->load->view('site_header');
         $this->load->view('sidebar_wrapper');
         $this->load->view('login_form');
@@ -27,12 +26,6 @@ class Zaloguj extends CI_Controller {
             $password = $this->input->post('password');
             $role = $this->input->post('role');
 
-
-            $this->form_validation->set_rules('user', 'Username', 'required');
-            $this->form_validation->set_rules('password', 'Password', 'required');
-            if($this->form_validation->run() == FALSE){
-
-            }
             if($role == 2) {
                 if ($this->student_model->checkLoginAndPassword($id, $password) != null) {
                     $data =$this->student_model->checkLoginAndPassword($id, $password);

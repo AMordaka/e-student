@@ -28,7 +28,11 @@ class Wystaw extends CI_Controller {
         $this->load->view('site_header');
         $this->load->view('sidebar_wrapper');
         $this->load->view('login_form');
+        $this->loadData();
         $this->load->view('footer');
+    }
+
+    public function loadData(){
         $this->db->select('*');
         $this->db->from('oceny');
         $this->db->join('przedmiot', 'przedmiot.subjectId = oceny.subjectId');
@@ -38,7 +42,6 @@ class Wystaw extends CI_Controller {
         $data['dowystawienia'] = $query->result();
 
         $this->load->view('wystaw',$data);
-
     }
 
     public function wystawOcene(){

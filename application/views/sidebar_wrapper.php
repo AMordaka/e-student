@@ -22,6 +22,16 @@
                 <a href="/student/home">Strona Główna</a>
             </li>
             <?php
+            if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
+                echo"<li><a href=\"przedmioty\">Zarządzaj przedmiotami</a></li>";
+            }
+            ?>
+            <?php
+            if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
+                echo"<li><a href=\"dodaj_uzytkownika\">Dodaj użytkownika</a></li>";
+            }
+            ?>
+            <?php
             if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 2){
                 echo"<li><a href=\"oceny\">Twoje Oceny</a></li>";
             }

@@ -20,7 +20,8 @@ class Uczelnie extends CI_Controller {
 	 */
       function __construct() { 
          parent::__construct(); 
-         $this->load->helper('url'); 
+         $this->load->helper('url');
+         $this->load->model('Uczelnia_model', 'Uczelnia_model');
       } 
 	
 	public function index() {
@@ -28,17 +29,22 @@ class Uczelnie extends CI_Controller {
        $this->load->view('site_header');
        $this->load->view('sidebar_wrapper');
        $this->load->view('login_form');
+       $this->loadData();
        $this->load->view('footer');
-       $this->load->model('Uczelnia_model', 'Uczelnia_model');
-       $query = $this->db->get("Uczelnia");
-       $data['uczelnie'] = $query->result();
-       $query2 = $this->db->get("Wydzial");
-       $data['wydzial'] = $query2->result();
-       $this->load->view('uczelnie',$data);
+
+    }
+
+    public function loadData(){
+
+        $query = $this->db->get("Uczelnia");
+        $data['uczelnie'] = $query->result();
+        $query2 = $this->db->get("Wydzial");
+        $data['wydzial'] = $query2->result();
+        $this->load->view('uczelnie',$data);
+
     }
 
     public function addAcademyForm(){
-        $this->load->model('Uczelnia_model', 'Uczelnia_model');
         $name = $this->input->post('name');
         $street = $this->input->post('street');
         $number = $this->input->post('number');
@@ -54,7 +60,6 @@ class Uczelnie extends CI_Controller {
     }
 
     public function deleteAcademyForm(){
-        $this->load->model('Uczelnia_model', 'Uczelnia_model');
         $id = $this->input->post('id');
         $this->Uczelnia_model->deleteAcademy($id);
         redirect(base_url() . 'uczelnie');
