@@ -1,93 +1,9 @@
-<!DOCTYPE html>
-<html lang="pl">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>E-Student - Serwis dla studentów</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    Menu
-                </a>
-            </li>
-            <li>
-                <?php
-                if(isset($_SESSION['name']) && isset($_SESSION['surname'])){
-                    echo"<li><a href=\"home\">Witaj ".$_SESSION['name']." !</a></li>";
-                }
-
-                ?>
-            </li>
-            <li>
-                <a href="/student/home">Strona Główna</a>
-            </li>
-            <?php
-            if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 2){
-                echo"<li><a href=\"oceny\">Twoje Oceny</a></li>";
-            }
-            ?>
-            <?php
-            if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 3){
-                echo"<li><a href=\"wystaw\">Wystaw Oceny</a></li>";
-            }
-            ?>
-            <li>
-                <a href="/student/uczelnie">Lista Uczelni</a>
-            </li>
-            <li>
-                <a href="/student/kontakt">Kontakt</a>
-            </li>
-            <?php
-            if(isset($_SESSION['name']) || isset($_SESSION['user']) )
-            {
-                echo"<li><a href=\"zaloguj\logout\">Wyloguj się!</a></li>";
-            }
-            else
-            {
-                echo"<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\">Zaloguj się!</a></li>";
-            }
-            ?>
-        </ul>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">
 
-            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                <div class="loginmodal-container">
-                    <h1>Zaloguj się!</h1><br>
-                    <form role="form" method="post" action="<?php echo site_url('zaloguj/login');?>">
-                        <input type="radio" name="role" value="2" checked>Student
-                        <input type="radio" name="role" value="3">Wykładowca
-                        <input type="text" name="user" placeholder="Indeks">
-                        <input type="password" name="password" placeholder="Hasło">
-                        <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-                    </form>
-                </div>
-            </div>
+
+
             <div class="container">
                 <h2>Lista uczelni</h2>
                 <p>Wszystkie uczelnie obsługiwane przez nasz serwis</p>
@@ -106,31 +22,46 @@
                         echo "<td>$u->name</td>";
                         echo "<td>$u->street $u->number $u->postCode $u->city</td>";
                         echo "<td>$u->year</td>";
+                        if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1) {
+                            echo "<form role=\"form\" method=\"post\" action='uczelnie\deleteAcademyForm'>
+                                    <td><input type='hidden' name='id' value='$u->academyId'> 
+                                    <input type=\"submit\" name=\"wystawOcene\" value=\"Usuń\">
+                                    </form></td>";
+                        }
                         echo "</tr>";
-                    }
-                    if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
-                        echo"<td><a href=\"#\" data-toggle=\"modal\" data-target=\"#dodajuczelnie\">Dodaj Uczelnie!</a></td>";
                     }
                     ?>
                     </tbody>
                 </table>
-            </div>
 
+                <?php
+                if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
+                    echo"<a href=\"#\" class=\"btn btn-third\" data-toggle=\"modal\" data-target=\"#dodajuczelnie\">Dodaj Uczelnie!</a>";
+                }
+                ?>
+            </div>
             <div class="modal fade" id="dodajuczelnie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                 <div class="loginmodal-container">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
                     <h1>Dodaj Uczelnie!</h1><br>
-                    <form role="form" method="post" action="<?php echo site_url('uczelnie/dodajUczelnie');?>">
+                    <form role="form" method="post" action="<?php echo site_url('uczelnie/addAcademyForm');?>">
                         <input type="text" name="name" placeholder="Nazwa Uczelni">
                         <input type="text" name="street" placeholder="Ulica">
                         <input type="text" name="number" placeholder="Numer">
-                        <input type="text" name="postCode" placeholder="Kod Pocztowy">
+                        <input type="text" name="postCode" pattern="[0-9]{2}[\-]{1}[1-9]{3}" placeholder="Kod Pocztowy">
                         <input type="text" name="city" placeholder="Miasto">
-                        <input type="text" name="year" placeholder="Rok Założenia">
+                        <input type="text" name="year" pattern="[0-9]{4}" placeholder="Rok Założenia">
 
                         <input type="submit" name="login" class="login loginmodal-submit" value="Dodaj Uczelnie">
                     </form>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
+
 
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Rozsuń menu</a>
         </div>

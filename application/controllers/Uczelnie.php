@@ -25,14 +25,19 @@ class Uczelnie extends CI_Controller {
 	
 	public function index() {
        $this->load->helper('url');
-
-        $query = $this->db->get("Uczelnia");
-        $data['uczelnie'] = $query->result();
-
-        $this->load->view('uczelnie',$data);
+        $this->load->view('site_header');
+        $this->load->view('sidebar_wrapper');
+        $this->load->view('login_form');
+       $this->load->model('Uczelnia_model', 'Uczelnia_model');
+       $query = $this->db->get("Uczelnia");
+       $data['uczelnie'] = $query->result();
+       $query2 = $this->db->get("Wydzial");
+       $data['wydzial'] = $query2->result();
+       $this->load->view('uczelnie',$data);
     }
 
-    public function dodajUczelnie(){
+    public function addAcademyForm(){
+        $this->load->model('Uczelnia_model', 'Uczelnia_model');
         $name = $this->input->post('name');
         $street = $this->input->post('street');
         $number = $this->input->post('number');
@@ -40,17 +45,17 @@ class Uczelnie extends CI_Controller {
         $city = $this->input->post('city');
         $year = $this->input->post('year');
 
-        $data = array(
-            'name' => $name,
-            'street' => $street,
-            'number' => $number,
-            'postCode' => $postCode,
-            'city' => $city,
-            'year' => $year,
-        );
 
-        $this->db->insert('uczelnia', $data);
+        if($name != null && $street != null && $number != null && $city != null){
+            $this->Uczelnia_model->addAcademy($name, $street, $number, $postCode, $city, $year);
+            redirect(base_url() . 'uczelnie');
+        }
+    }
 
+    public function deleteAcademyForm(){
+        $this->load->model('Uczelnia_model', 'Uczelnia_model');
+        $id = $this->input->post('id');
+        $this->Uczelnia_model->deleteAcademy($id);
         redirect(base_url() . 'uczelnie');
     }
 }

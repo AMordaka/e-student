@@ -2347,6 +2347,18 @@ fieldset[disabled] a.btn {
   border-color: #6c757d;
 }
 
+.btn-third {
+  color: #0062cc;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.btn-third:hover {
+  color: #0062cc;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
 .btn-secondary:focus, .btn-secondary.focus {
   box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
 }
@@ -5055,7 +5067,6 @@ button.close {
   -ms-flex-direction: column;
       flex-direction: column;
   pointer-events: auto;
-  background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;

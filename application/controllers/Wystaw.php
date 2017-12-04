@@ -25,6 +25,9 @@ class Wystaw extends CI_Controller {
 	
 	public function index() { 
         $this->load->helper('url');
+        $this->load->view('site_header');
+        $this->load->view('sidebar_wrapper');
+        $this->load->view('login_form');
         $this->db->select('*');
         $this->db->from('oceny');
         $this->db->join('przedmiot', 'przedmiot.subjectId = oceny.subjectId');
