@@ -5,12 +5,11 @@
 
 
             <div class="container">
-                <h2>Lista uczelni</h2>
-                <p>Wszystkie uczelnie obsługiwane przez nasz serwis</p>
+                <h2>Lista przedmitów</h2>
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Nazwa uczelni</th>
+                        <th>Nazwa przedmiotu</th>
                         <th>Adres</th>
                         <th>Rok Założenia</th>
                     </tr>
@@ -36,7 +35,7 @@
 
                 <?php
                 if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
-                    echo"<a href=\"#\" class=\"btn btn-third\" data-toggle=\"modal\" data-target=\"#dodajuczelnie\">Dodaj Uczelnie!</a>";
+                    echo"<a href=\"#\" class=\"btn btn-third\" data-toggle=\"modal\" data-target=\"#dodajuczelnie\">DodajStudenta Uczelnie!</a>";
                 }
                 ?>
             </div>
@@ -50,7 +49,7 @@
                         <input type="text" name="name" placeholder="Nazwa Uczelni">
                         <input type="text" name="street" placeholder="Ulica">
                         <input type="text" name="number" placeholder="Numer">
-                        <input type="text" name="postCode" pattern="[0-9]{2}[\-]{1}[0-9]{3}" placeholder="Kod Pocztowy">
+                        <input type="text" name="postCode" pattern="[0-9]{2}[\-]{1}[1-9]{3}" placeholder="Kod Pocztowy">
                         <input type="text" name="city" placeholder="Miasto">
                         <input type="text" name="year" pattern="[0-9]{4}" placeholder="Rok Założenia">
 
@@ -67,3 +66,4 @@
         </div>
     </div>
     <!-- /#page-content-wrapper -->
+ 

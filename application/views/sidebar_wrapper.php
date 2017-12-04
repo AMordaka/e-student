@@ -28,7 +28,7 @@
             ?>
             <?php
             if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
-                echo"<li><a href=\"dodaj_uzytkownika\">Dodaj użytkownika</a></li>";
+                echo"<li><a href=\"dodajstudenta\">Studenci</a></li>";
             }
             ?>
             <?php

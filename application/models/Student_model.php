@@ -58,4 +58,20 @@ class Student_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+
+    public function addStudent($specializationId, $name, $surname,$pesel, $street, $number, $postCode, $city){
+        $data = array(
+            'specializationId' => $specializationId,
+            'roleId' => 2,
+            'name' => $name,
+            'surname' => $surname,
+            'password' => 'Qwerty123',
+            'pesel' => $pesel,
+            'street' => $street,
+            'number' => $number,
+            'postCode' => $postCode,
+            'city' => $city
+        );
+        $this->db->insert('student', $data);
+    }
 }
