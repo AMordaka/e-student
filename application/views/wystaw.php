@@ -23,10 +23,22 @@
                         echo "<td>$d->nameSubject</td>";
                         echo "<td>$d->name $d->surname</td>";
                         echo "<form role=\"form\" method=\"post\" action='wystaw\wystawOcene'>
-                                <td><input type=\"text\" name=\"ocena\" pattern='[2-5]{1}' placeholder=\"Ocena\">
+                                <td>
+                                <div class='selectcustom'>
+                                <select name=\"ocena\" data-live-search=\"true\" required>
+                                    <option value=\"\" disabled selected>Wybierz ocenę</option>
+                                    <option value=\"2\">2 - Dwa</option>
+                                    <option value=\"3\">3 - Trzy</option>
+                                    <option value=\"3.5\">3.5 - Trzy i pół</option>
+                                    <option value=\"4\">4 - Cztery</option>
+                                    <option value=\"4.5\">4.5 - Cztery i pół</option>
+                                    <option value=\"5\">5 - Pięć</option>
+                                </select>
                                 <input type='hidden' name='id' value='$d->gradeId'> 
                                 <input class='btn-secondary' type=\"submit\" name=\"wystawOcene\" value=\"Wystaw\">
-                                </form></td>";
+                                </div>
+                                </form>
+                                </td>";
                         echo "</tr>";
                     }
 
