@@ -3,7 +3,6 @@
         <div class="container-fluid">
 
 
-
             <div class="container">
                 <h2>Lista uczelni</h2>
                 <p>Wszystkie uczelnie obsługiwane przez nasz serwis</p>
