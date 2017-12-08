@@ -40,21 +40,57 @@ class Przedmioty extends CI_Controller {
         $this->db->from('przedmiot');
         $query = $this->db->get();
         $data['subjects'] = $query->result();
+
+        $this->db->select('*');
+        $this->db->from('student');
+        $query = $this->db->get();
+        $data['students'] = $query->result();
+
+        $this->db->select('*');
+        $this->db->from('wykladowca');
+        $query = $this->db->get();
+        $data['teachers'] = $query->result();
+
+
         $this->load->view('przedmioty', $data);
 }
 
 
-public function addSubjectForm(){
-    $name = $this->input->post('nameSubject');
+    public function addSubjectForm(){
+        $name = $this->input->post('nameSubject');
 
-    if($name != null){
-        $data = array(
-            'nameSubject' => $name
-        );
-        $this->db->insert('przedmiot', $data);
+        if($name != null){
+            $data = array(
+                'nameSubject' => $name
+            );
+            $this->db->insert('przedmiot', $data);
+            redirect(base_url() . 'przedmioty');
+        }
         redirect(base_url() . 'przedmioty');
     }
-    redirect(base_url() . 'przedmioty');
-}
 
+
+    public  function addSubjectToStudent(){
+
+        $subject = $this->input->post('subject');
+        $teacher = $this->input->post('teacher');
+        $student = $this->input->post('student');
+
+        $data = array(
+            'userId' => $student,
+            'teacherId' => $teacher,
+            'subjectId' => $subject
+        );
+
+        $this->db->insert('oceny',$data);
+        redirect(base_url() . 'przedmioty');
+
+    }
+
+    public function deleteSubject(){
+        $id = $this->input->post('id');
+        $this->db->where('subjectId', $id);
+        $this->db->delete('przedmiot');
+        redirect(base_url() . 'przedmioty');
+    }
 }

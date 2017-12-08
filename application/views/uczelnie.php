@@ -25,7 +25,7 @@
                         if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1) {
                             echo "<form role=\"form\" method=\"post\" action='uczelnie\deleteAcademyForm'>
                                     <td><input type='hidden' name='id' value='$u->academyId'> 
-                                    <input type=\"submit\" name=\"wystawOcene\" value=\"Usuń\">
+                                    <input class='btn-secondary' type=\"submit\" name=\"wystawOcene\" value=\"Usuń\">
                                     </form></td>";
                         }
                         echo "</tr>";
@@ -36,7 +36,7 @@
 
                 <?php
                 if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
-                    echo"<a href=\"#\" class=\"btn btn-third\" data-toggle=\"modal\" data-target=\"#dodajuczelnie\">Dodaj Uczelnie!</a>";
+                    echo"<a href=\"#\" class='btn btn-primary' data-toggle=\"modal\" data-target=\"#dodajuczelnie\">Dodaj Uczelnie!</a>";
                 }
                 ?>
             </div>

@@ -34,7 +34,7 @@
 
                 <?php
                 if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
-                    echo"<a href=\"#\" class=\"btn btn-third\" data-toggle=\"modal\" data-target=\"#dodajstudenta\">Dodaj Studenta!</a>";
+                    echo"<a href=\"#\" class='btn btn-primary' data-toggle=\"modal\" data-target=\"#dodajstudenta\">Dodaj Studenta!</a>";
                 }
                 ?>
             </div>

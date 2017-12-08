@@ -25,7 +25,7 @@
                         echo "<form role=\"form\" method=\"post\" action='wystaw\wystawOcene'>
                                 <td><input type=\"text\" name=\"ocena\" pattern='[2-5]{1}' placeholder=\"Ocena\">
                                 <input type='hidden' name='id' value='$d->gradeId'> 
-                                <input type=\"submit\" name=\"wystawOcene\" value=\"Wystaw\">
+                                <input class='btn-secondary' type=\"submit\" name=\"wystawOcene\" value=\"Wystaw\">
                                 </form></td>";
                         echo "</tr>";
                     }
