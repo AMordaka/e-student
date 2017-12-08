@@ -32,6 +32,11 @@
             }
             ?>
             <?php
+            if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
+                echo"<li><a href=\"dodajwykladowce\">Wykładowcy</a></li>";
+            }
+            ?>
+            <?php
             if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 2){
                 echo"<li><a href=\"oceny\">Twoje Oceny</a></li>";
             }

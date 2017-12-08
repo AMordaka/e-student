@@ -9,6 +9,7 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th>Uczelnia</th>
                         <th>Kierunek</th>
                         <th>Imie</th>
                         <th>Nazwisko</th>
@@ -20,6 +21,7 @@
                     <?php
                     foreach($users as $u) {
                         echo "<tr>";
+                        echo "<td>$u->academyName</td>";
                         echo "<td>$u->term</td>";
                         echo "<td>$u->name</td>";
                         echo "<td>$u->surname</td>";
@@ -44,8 +46,18 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <h1>Dodaj Studenta!</h1><br>
-                                <form role="form" method="post" action="<?php echo site_url('dodaj/addUser');?>">
-                                    <input type="text" name="specializationId" pattern="[1-7]{1}" title="ID kierunku" placeholder="Kierunek">
+                                <form role="form" method="post" action="<?php echo site_url('DodajStudenta/addUser');?>">
+                                    <select name="specializationId" data-live-search="true" required>
+                                        <option value="" disabled selected>Wybierz Kierunek</option>
+                                        <?php
+
+                                        foreach($specializations as $specialization)
+                                        {
+                                            echo '<option value="'.$specialization->specializationId.'">'.$specialization->term.'</option>';
+
+                                        }
+                                        ?>
+                                    </select>
                                     <input type="text" name="name" placeholder="Imie">
                                     <input type="text" name="surname" placeholder="Nazwisko">
                                     <input type="text" name="pesel" pattern="[0-9]{11}" title="Wprowadz 11-cyfrowy pesel" placeholder="Pesel">

@@ -12,10 +12,12 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
     <link href="css/contact.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-select.css">
 
 </head>

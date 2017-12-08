@@ -19,7 +19,7 @@
                     <?php
                     foreach($uczelnie as $u) {
                         echo "<tr>";
-                        echo "<td>$u->name</td>";
+                        echo "<td>$u->academyName</td>";
                         echo "<td>$u->street $u->number $u->postCode $u->city</td>";
                         echo "<td>$u->year</td>";
                         if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1) {
