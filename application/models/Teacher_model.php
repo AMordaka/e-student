@@ -63,4 +63,21 @@ class Teacher_model extends CI_Model
         $this->db->where('password', $password);
         return $this->db->get()->result_array();
     }
+
+
+    public function addUser($departmentId, $name, $surname,$title, $street, $number, $postCode, $city){
+        $data = array(
+            'departmentId' => $departmentId,
+            'roleId' => 3,
+            'name' => $name,
+            'surname' => $surname,
+            'password' => 'Qwerty123',
+            'title' => $title,
+            'street' => $street,
+            'number' => $number,
+            'postCode' => $postCode,
+            'city' => $city
+        );
+        $this->db->insert('wykladowca', $data);
+    }
 }

@@ -24,5 +24,5 @@ class Uczelnia_model extends CI_Model
         $this->db->where('academyId', $id);
         $this->db->delete('uczelnia');
     }
-	
+
 }

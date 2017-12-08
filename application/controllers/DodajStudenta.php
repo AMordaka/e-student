@@ -36,8 +36,15 @@ class DodajStudenta extends CI_Controller {
         $this->db->select('*');
         $this->db->from('student');
         $this->db->join('kierunek', 'kierunek.specializationId = student.specializationId');
+        $this->db->join('wydzial', 'wydzial.departmentId = kierunek.departmentId');
+        $this->db->join('uczelnia', 'uczelnia.academyId = wydzial.academyId');
         $query = $this->db->get();
         $data['users'] = $query->result();
+
+        $this->db->select('*');
+        $this->db->from('kierunek');
+        $query = $this->db->get();
+        $data['specializations'] = $query->result();
 
         $this->load->view('dodajstudenta',$data);
     }
