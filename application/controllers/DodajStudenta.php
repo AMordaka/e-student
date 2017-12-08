@@ -67,5 +67,6 @@ class DodajStudenta extends CI_Controller {
             $this->Student_model->addStudent($specializationId, $name, $surname,$pesel, $street, $number, $postCode, $city);
             redirect(base_url() . 'dodajstudenta');
         }
+        redirect(base_url() . 'dodajstudenta');
     }
 }

@@ -28,10 +28,33 @@ class Przedmioty extends CI_Controller {
        $this->load->view('site_header');
        $this->load->view('sidebar_wrapper');
        $this->load->view('login_form');
-       $this->load->view('home');
+       $this->loadData();
        $this->load->view('footer');
 
 
+
     }
-    
+
+    public function loadData(){
+        $this->db->select('*');
+        $this->db->from('przedmiot');
+        $query = $this->db->get();
+        $data['subjects'] = $query->result();
+        $this->load->view('przedmioty', $data);
+}
+
+
+public function addSubjectForm(){
+    $name = $this->input->post('nameSubject');
+
+    if($name != null){
+        $data = array(
+            'nameSubject' => $name
+        );
+        $this->db->insert('przedmiot', $data);
+        redirect(base_url() . 'przedmioty');
+    }
+    redirect(base_url() . 'przedmioty');
+}
+
 }

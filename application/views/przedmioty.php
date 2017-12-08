@@ -9,24 +9,16 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th>Id przedmiotu</th>
                         <th>Nazwa przedmiotu</th>
-                        <th>Adres</th>
-                        <th>Rok Założenia</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    foreach($uczelnie as $u) {
+                    foreach($subjects as $subject) {
                         echo "<tr>";
-                        echo "<td>$u->name</td>";
-                        echo "<td>$u->street $u->number $u->postCode $u->city</td>";
-                        echo "<td>$u->year</td>";
-                        if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1) {
-                            echo "<form role=\"form\" method=\"post\" action='uczelnie\deleteAcademyForm'>
-                                    <td><input type='hidden' name='id' value='$u->academyId'> 
-                                    <input type=\"submit\" name=\"wystawOcene\" value=\"Usuń\">
-                                    </form></td>";
-                        }
+                        echo "<td>$subject->subjectId</td>";
+                        echo "<td>$subject->nameSubject</td>";
                         echo "</tr>";
                     }
                     ?>
@@ -35,25 +27,20 @@
 
                 <?php
                 if(isset($_SESSION['name']) && isset($_SESSION['surname']) && $_SESSION['roleId'] == 1){
-                    echo"<a href=\"#\" class=\"btn btn-third\" data-toggle=\"modal\" data-target=\"#dodajuczelnie\">DodajStudenta Uczelnie!</a>";
+                    echo"<a href=\"#\" class=\"btn btn-third\" data-toggle=\"modal\" data-target=\"#dodajPrzedmiot\">Dodaj Przedmiot!</a>";
                 }
                 ?>
             </div>
-            <div class="modal fade" id="dodajuczelnie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal fade" id="dodajPrzedmiot" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                 <div class="loginmodal-container">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body">
-                    <h1>Dodaj Uczelnie!</h1><br>
-                    <form role="form" method="post" action="<?php echo site_url('uczelnie/addAcademyForm');?>">
-                        <input type="text" name="name" placeholder="Nazwa Uczelni">
-                        <input type="text" name="street" placeholder="Ulica">
-                        <input type="text" name="number" placeholder="Numer">
-                        <input type="text" name="postCode" pattern="[0-9]{2}[\-]{1}[1-9]{3}" placeholder="Kod Pocztowy">
-                        <input type="text" name="city" placeholder="Miasto">
-                        <input type="text" name="year" pattern="[0-9]{4}" placeholder="Rok Założenia">
+                    <h1>Dodaj Przedmiot!</h1><br>
+                    <form role="form" method="post" action="<?php echo site_url('Przedmioty/addSubjectForm');?>">
+                        <input type="text" name="nameSubject"  placeholder="Nazwa Przedmiotu">
 
-                        <input type="submit" name="login" class="login loginmodal-submit" value="Dodaj Uczelnie">
+                        <input type="submit" name="login" class="login loginmodal-submit" value="Dodaj Przedmiot">
                     </form>
                         </div>
                     </div>

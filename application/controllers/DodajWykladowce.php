@@ -67,5 +67,6 @@ class DodajWykladowce extends CI_Controller {
             $this->Teacher_model->addUser($departmentId, $name, $surname,$title, $street, $number, $postCode, $city);
             redirect(base_url() . 'dodajwykladowce');
         }
+        redirect(base_url() . 'dodajwykladowce');
     }
 }
