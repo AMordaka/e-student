@@ -45,7 +45,7 @@
                             <div class="modal-body">
                     <h1>Dodaj Przedmiot!</h1><br>
                     <form role="form" method="post" action="<?php echo site_url('Przedmioty/addSubjectForm');?>">
-                        <input type="text" name="nameSubject"  placeholder="Nazwa Przedmiotu">
+                        <input type="text" name="nameSubject" pattern="[1,]" placeholder="Nazwa Przedmiotu">
 
                         <input type="submit" name="login" class="login loginmodal-submit" value="Dodaj Przedmiot">
                     </form>
